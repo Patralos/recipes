@@ -179,6 +179,19 @@ def find_recipe_json(ld_json, url):
     if url != '':
         ld_json['recipeInstructions'] += '\n\n' + _('Imported from') + ' ' + url
 
+    if 'nutrition' in ld_json:
+        ld_json['recipeInstructions'] += '\n\n' + _('Nutrition') + ':\n'
+
+        nutrition = ld_json['nutrition']
+        if 'calories' in nutrition:
+            ld_json['recipeInstructions'] += '  ' + _('Calories') + ': ' + nutrition['calories'] + '\n'
+        if 'carbohydrateContent' in nutrition:
+            ld_json['recipeInstructions'] += '  ' + _('Carbohydrate') + ': ' + nutrition['carbohydrateContent'] + '\n'
+        if 'fatContent' in nutrition:
+            ld_json['recipeInstructions'] += '  ' + _('Fat') + ': ' + nutrition['fatContent'] + '\n'
+        if 'proteinContent' in nutrition:
+            ld_json['recipeInstructions'] += '  ' + _('Protein') + ': ' + nutrition['proteinContent'] + '\n'
+
     if 'image' in ld_json:
         # check if list of images is returned, take first if so
         if (type(ld_json['image'])) == list:
