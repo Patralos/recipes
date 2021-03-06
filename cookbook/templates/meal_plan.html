@@ -124,7 +124,10 @@
                                    :group="{ name: 'plan', pull: 'clone', put: false }" :clone="cloneRecipe">
                             <div class="list-group-item d-flex align-items-center justify-content-between"
                                  v-for="(element, index) in recipes" :key="element.id">
-                                <span>
+                                <span class="pull-left" style="height: 75px; width: 30%">
+                                    <img :src="element.image" class="" draggable="false" style="height: 100%;">
+                                </span>
+                                <span style="text-align: center">
                                     <i class="fas fa-arrows-alt"></i> [[element.name]]
                                 </span>
                                 <span class="badge badge-light badge-pill">[[element.servings]]</span>
