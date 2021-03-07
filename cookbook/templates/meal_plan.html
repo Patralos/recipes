@@ -125,7 +125,7 @@
                             <div class="list-group-item d-flex align-items-center justify-content-between"
                                  v-for="(element, index) in recipes" :key="element.id">
                                 <span class="pull-left" style="height: 75px; width: 30%">
-                                    <img :src="element.image" class="" draggable="false" style="height: 100%;">
+                                    <img :src="element.image" class="" draggable="false" style="max-height: 100%; max-width: 100%;">
                                 </span>
                                 <span style="text-align: center">
                                     <i class="fas fa-arrows-alt"></i> [[element.name]]

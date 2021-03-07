@@ -302,14 +302,14 @@ class RecipeViewSet(viewsets.ModelViewSet, StandardFilterMixin):
             serializer.save()
             img = Image.open(obj.image)
 
-            basewidth = 720
+            basewidth = 1080
             wpercent = (basewidth / float(img.size[0]))
             hsize = int((float(img.size[1]) * float(wpercent)))
             img = img.resize((basewidth, hsize), Image.ANTIALIAS)
 
             im_io = io.BytesIO()
-            img.save(im_io, 'PNG', quality=70)
-            obj.image = File(im_io, name=f'{uuid.uuid4()}_{obj.pk}.png')
+            img.save(im_io, 'JPEG', quality=80)
+            obj.image = File(im_io, name=f'{uuid.uuid4()}_{obj.pk}.jpg')
             obj.save()
 
             return Response(serializer.data)

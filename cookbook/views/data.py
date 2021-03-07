@@ -175,15 +175,15 @@ def import_url(request):
                 img = Image.open(BytesIO(response.content))
 
                 # todo move image processing to dedicated function
-                basewidth = 720
+                basewidth = 1080
                 wpercent = (basewidth / float(img.size[0]))
                 hsize = int((float(img.size[1]) * float(wpercent)))
                 img = img.resize((basewidth, hsize), Image.ANTIALIAS)
 
                 im_io = BytesIO()
-                img.save(im_io, 'PNG', quality=70)
+                img.save(im_io, 'JPEG', quality=80)
                 recipe.image = File(
-                    im_io, name=f'{uuid.uuid4()}_{recipe.pk}.png'
+                    im_io, name=f'{uuid.uuid4()}_{recipe.pk}.jpg'
                 )
                 recipe.save()
             except UnidentifiedImageError:
